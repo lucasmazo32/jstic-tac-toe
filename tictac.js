@@ -24,14 +24,13 @@ const GameFlow = (game, player1, player2) => {
 };
 
 const squares = document.querySelectorAll('.pos');
-const playBtn = document.querySelector('#play');
 const gameContainer = document.querySelector('.game-container');
 
 for (let i = 0; i < squares.length; i++) {
   const x = squares[i];
   x.onclick = () => {
     x.style.backgroundColor = 'red';
-    console.log(parseInt(x.classList.value.slice(8)));
+    console.log(x.id);
   }
 };
 

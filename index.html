@@ -4,14 +4,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.scss">
   <title>Sandbox</title>
 </head>
 <body>
   <div class="title">
     <h1>Tic Tac Toe</h1>
   </div>
-  <div class="name-container">
+  <div class="name-container container">
     <div>
       <span>X</span>
       <input type="text" name="player1" id="player-1" placeholder="Player 1" class="form-control">
@@ -22,21 +22,21 @@
     </div>
     <a class="btn btn-dark" id="play">Play!</a>
   </div>
-  <div class="game-container">
+  <div class="game-container container">
     <div class="row">
-      <a class="pos pos-1"></a>
-      <a class="pos pos-2"></a>
-      <a class="pos pos-3"></a>
+      <a class="pos pos-1" id="1"></a>
+      <a class="pos pos-2" id="2"></a>
+      <a class="pos pos-3" id="3"></a>
     </div>
     <div class="row">
-      <a class="pos pos-4"></a>
-      <a class="pos pos-5"></a>
-      <a class="pos pos-6"></a>
+      <a class="pos pos-4" id="4"></a>
+      <a class="pos pos-5" id="5"></a>
+      <a class="pos pos-6" id="6"></a>
     </div>
     <div class="row">
-      <a class="pos pos-7"></a>
-      <a class="pos pos-8"></a>
-      <a class="pos pos-9"></a>
+      <a class="pos pos-7" id="7"></a>
+      <a class="pos pos-8" id="8"></a>
+      <a class="pos pos-9" id="9"></a>
     </div>
   </div>
 </body>
