@@ -1,0 +1,131 @@
+body {
+  font-family: 'Baloo Chettan 2', sans-serif, Arial, Helvetica;
+  background-color: cadetblue;
+}
+
+.title {
+  text-align: center;
+}
+
+.title h1 {
+  font-size: 80px;
+}
+
+.name-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  width: 40%;
+  min-width: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.name-container input {
+  margin-top: 10px;
+}
+
+.name-container div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.name-container span {
+  margin-top: 10px;
+  text-align: center;
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.name-container a {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 10px;
+  color: white;
+}
+
+.name-container a:hover {
+  color: white;
+}
+
+.game-container {
+  display: block;
+  opacity: 0;
+  pointer-events: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 50px;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.pos {
+  display: block;
+  height: 80px;
+  width: 80px;
+  border: 0.5px solid black;
+  -webkit-transition: height 1s ease, width 1s ease;
+  transition: height 1s ease, width 1s ease;
+}
+
+.pos:hover {
+  cursor: pointer;
+  background-color: gainsboro;
+  -webkit-transition: ease 1s;
+  transition: ease 1s;
+}
+
+.pos-1 {
+  border-top: none;
+  border-left: none;
+}
+
+.pos-2 {
+  border-top: none;
+}
+
+.pos-3 {
+  border-right: none;
+  border-top: none;
+}
+
+.pos-4 {
+  border-left: none;
+}
+
+.pos-6 {
+  border-right: none;
+}
+
+.pos-7 {
+  border-bottom: none;
+  border-left: none;
+}
+
+.pos-8 {
+  border-bottom: none;
+}
+
+.pos-9 {
+  border-bottom: none;
+  border-right: none;
+}
+/*# sourceMappingURL=style.css.map */

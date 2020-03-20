@@ -23,11 +23,34 @@ const GameFlow = (game, player1, player2) => {
   return { move };
 };
 
-// Constants
+// Animations
 
 const squares = document.querySelectorAll('.pos');
 const playBtn = document.querySelector('#play');
 const gameContainer = document.querySelector('.game-container');
+
+playBtn.onmouseenter = () => {
+  gameContainer.style.opacity = '0.3';
+};
+
+var nClick = 0;
+
+playBtn.onclick = () => {
+  gameContainer.style.opacity = '1';
+  gameContainer.style.pointerEvents = 'inherit';
+  playBtn.style.pointerEvents = 'none';
+  squares.forEach(square => {
+    square.style.width = '120px';
+    square.style.height = '120px';
+  });
+  nClick += 1;
+}
+
+playBtn.onmouseleave = () => {
+  if (nClick == 0){
+    gameContainer.style.opacity = '';
+  }
+};
 
 for (let i = 0; i < squares.length; i++) {
   const x = squares[i];
@@ -35,33 +58,4 @@ for (let i = 0; i < squares.length; i++) {
     x.style.backgroundColor = 'red';
     console.log(parseInt(x.classList.value.slice(8)));
   }
-};
-
-playBtn.onmouseenter = () => {
-  const getHeight = function () {
-    gameContainer.style.display = 'block';
-    var height = gameContainer.scrollHeight + 'px';
-    gameContainer.style.display = '';
-    return height;
-  };
-
-  var height = getHeight();
-  gameContainer.classList.add('visible-hover');
-  gameContainer.style.height = height;
-
-  window.setTimeout(function () {
-		gameContainer.style.height = '';
-	}, 350);
-};
-
-playBtn.onmouseleave = () => {
-  gameContainer.style.height = gameContainer.scrollHeight + 'px';
-
-  window.setTimeout(function () {
-		gameContainer.style.height = '0';
-  }, 1);
-  
-  window.setTimeout(function () {
-		gameContainer.classList.remove('visible-hover');
-	}, 350);
 };

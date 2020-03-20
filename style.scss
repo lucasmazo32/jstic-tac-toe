@@ -49,25 +49,13 @@ body {
 // Game //
 
 .game-container {
-  display: none;
-  height: 0px;
+  display: block;
   opacity: 0;
+  pointer-events: none;
   width: fit-content;
   margin: 0 auto;
   margin-top: 50px;
-  transition: height 350ms ease, opacity 350ms ease;
-}
-
-.game-container.visible-hover {
-  display: block;
-  height: auto;
-  opacity: 0.5;
-}
-
-.game-container.visible {
-  display: block;
-  height: auto;
-  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 
 .row {
@@ -75,14 +63,50 @@ body {
 }
 
 .pos {
-  background-color: gray;
   display: block;
   height: 80px;
   width: 80px;
   border: 0.5px solid black;
+  transition: height 1s ease, width 1s ease;
   &:hover {
     cursor: pointer;
     background-color: gainsboro;
     transition: ease 1s;
   }
+}
+
+.pos-1 {
+  border-top: none;
+  border-left: none;
+}
+
+.pos-2 {
+  border-top: none;
+}
+
+.pos-3 {
+  border-right: none;
+  border-top: none;
+}
+
+.pos-4 {
+  border-left: none;
+}
+
+.pos-6 {
+  border-right: none;
+}
+
+.pos-7 {
+  border-bottom: none;
+  border-left: none;
+}
+
+.pos-8 {
+  border-bottom: none;
+}
+
+.pos-9 {
+  border-bottom: none;
+  border-right: none;
 }
