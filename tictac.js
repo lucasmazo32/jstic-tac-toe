@@ -1,64 +1,46 @@
-const Player = (name, icon) => {
+const playerFactory = (name, icon) => {
   return { name, icon };
 };
 
-const Board = () => {
-  const board = ['','','','','','','','',''];
-  const move = (pos, icon) => { board[pos] = icon };
-  const empty = () => {for (let index = 0; index < board.length; index++) {
-    board[index] = '';
-  }};
-  return { board, move, empty };
-};
+const player1 = playerFactory('mike', 'x');
+const player2 = playerFactory('lucas', 'o');
+const squares = document.querySelectorAll('.pos')
+console.log(squares[1])
 
-const GameFlow = (game, player1, player2) => {
-  const move = (pos, icon) => {
-    if (game.board[pos] == ''){
-      game.move(pos, icon);
-      console.log('Valid move')
-    } else {
-      console.log('Invalid move!');
-    }
-  };
-  return { move };
-};
 
-const squares = document.querySelectorAll('.pos');
-const gameContainer = document.querySelector('.game-container');
+const board = ['','','','','','','','',''];
 
-for (let i = 0; i < squares.length; i++) {
-  const x = squares[i];
-  x.onclick = () => {
-    x.style.backgroundColor = 'red';
-    console.log(x.id);
-  }
-};
+const move = (currentPlayer, position) => {
+  board[position] = currentPlayer.icon;
+  squares[position].innerHTML = currentPlayer.icon;
+  console.log(currentPlayer)
+  console.log(board)
+  checkWinner();
+  return board
+}
 
-playBtn.onmouseenter = () => {
-  const getHeight = function () {
-    gameContainer.style.display = 'block';
-    var height = gameContainer.scrollHeight + 'px';
-    gameContainer.style.display = '';
-    return height;
-  };
 
-  var height = getHeight();
-  gameContainer.classList.add('visible-hover');
-  gameContainer.style.height = height;
-
-  window.setTimeout(function () {
-		gameContainer.style.height = '';
-	}, 350);
-};
-
-playBtn.onmouseleave = () => {
-  gameContainer.style.height = gameContainer.scrollHeight + 'px';
-
-  window.setTimeout(function () {
-		gameContainer.style.height = '0';
-  }, 1);
+const checkWinner = () => {
+  let winningCombos = ["012","345","678","036","147","258","048","642"]
+  let map1 = ""
   
-  window.setTimeout(function () {
-		gameContainer.classList.remove('visible-hover');
-	}, 350);
-};
+  winningCombos.forEach(combo => {
+  combo.split("").forEach(digit => {
+    map1 += board[digit]
+  })
+  let result;
+  if (map1 == "xxx" || map1 == "ooo") {
+      console.log(map1)
+      result = true;
+  } else {
+      result = false;
+  }
+  });
+  }
+
+let currentPlayer = player1;
+
+for (let i = 0; i <5 ; i++) {
+move(currentPlayer, prompt());
+currentPlayer === player1 ? currentPlayer = player2 : currentPlayer =player1
+}
