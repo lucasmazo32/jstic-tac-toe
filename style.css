@@ -11,7 +11,7 @@ body {
   font-size: 80px;
 }
 
-.name-container {
+.input-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,17 +19,44 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  width: 40%;
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
   min-width: 400px;
   margin: 0 auto;
   margin-top: 50px;
+  -webkit-transition: opacity 0.5s ease, margin 1s ease, max-width 1s ease, -webkit-flex-basis 1s ease;
+  transition: opacity 0.5s ease, margin 1s ease, max-width 1s ease, -webkit-flex-basis 1s ease;
+  transition: opacity 0.5s ease, margin 1s ease, flex-basis 1s ease, max-width 1s ease;
+  transition: opacity 0.5s ease, margin 1s ease, flex-basis 1s ease, max-width 1s ease, -webkit-flex-basis 1s ease, -ms-flex-preferred-size 1s ease;
 }
 
-.name-container input {
+.input-container input {
   margin-top: 10px;
 }
 
-.name-container div {
+.input-container div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.input-container #play {
+  width: 50%;
+  pointer-events: none;
+  opacity: 0.5;
+  height: 2.5em;
+  margin: 0 auto;
+  margin-top: 20px;
+  color: white;
+  -webkit-transition: height 1s ease, opacity 0.5s ease, margin 1s ease;
+  transition: height 1s ease, opacity 0.5s ease, margin 1s ease;
+}
+
+.input-container #play:hover {
+  color: white;
+}
+
+.name-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -47,28 +74,58 @@ body {
   font-size: 1.5em;
 }
 
-.name-container a {
-  width: 50%;
-  margin: 0 auto;
-  margin-top: 10px;
-  color: white;
+.player-container {
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 
-.name-container a:hover {
-  color: white;
+.player-container div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.player-container div span {
+  margin-top: 0;
+}
+
+.player-1-container {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.player-2-container {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .game-container {
   display: block;
+  margin: 0 auto;
+  margin-top: 50px;
   opacity: 0;
   pointer-events: none;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 0 auto;
-  margin-top: 50px;
-  -webkit-transition: opacity 0.5s ease;
-  transition: opacity 0.5s ease;
+  -webkit-transition: opacity 0.5s ease, margin 1s ease;
+  transition: opacity 0.5s ease, margin 1s ease;
 }
 
 .row {
@@ -81,6 +138,8 @@ body {
   display: block;
   height: 80px;
   width: 80px;
+  max-width: 33%;
+  max-height: 33%;
   border: 0.5px solid black;
   -webkit-transition: height 1s ease, width 1s ease;
   transition: height 1s ease, width 1s ease;

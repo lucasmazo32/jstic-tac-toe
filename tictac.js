@@ -28,6 +28,49 @@ const GameFlow = (game, player1, player2) => {
 const squares = document.querySelectorAll('.pos');
 const playBtn = document.querySelector('#play');
 const gameContainer = document.querySelector('.game-container');
+const player1Input = document.querySelector('#player-1');
+const player2Input = document.querySelector('#player-2');
+const player1Name = document.querySelector('.player-1-name');
+const player2Name = document.querySelector('.player-2-name');
+const playersShow = document.querySelectorAll('.player-container');
+const inputContainer = document.querySelector('.input-container')
+
+const InputCheck = (input1, input2) => {
+  const boxCheck = (event) => {
+    event.addEventListener('input', function(){
+      if (event.value.length != 0 && event.value.length < 3) {
+        event.style.boxShadow = '0px 0px 5px 2px red';
+      } else {
+        event.style.boxShadow = '';
+      }
+    })
+  };
+  boxCheck(input1);
+  boxCheck(input2);
+  const readyTG = (event1, event2) => {
+    event1.oninput = () => {
+      if(event1.value.length >= 3 && event2.value.length >= 3){
+        playBtn.style.opacity = '1';
+        playBtn.style.pointerEvents = 'inherit';
+      } else {
+        playBtn.style.opacity = '';
+        playBtn.style.pointerEvents = '';
+      }
+    };
+    event2.oninput = () => {
+      if(event1.value.length >= 3 && event2.value.length >= 3){
+        playBtn.style.opacity = '1';
+        playBtn.style.pointerEvents = 'inherit';
+      } else {
+        playBtn.style.opacity = '';
+        playBtn.style.pointerEvents = '';
+      }
+    };
+  };
+  readyTG(input1, input2);
+};
+
+InputCheck(player1Input, player2Input);
 
 playBtn.onmouseenter = () => {
   gameContainer.style.opacity = '0.3';
@@ -36,13 +79,39 @@ playBtn.onmouseenter = () => {
 var nClick = 0;
 
 playBtn.onclick = () => {
+
   gameContainer.style.opacity = '1';
   gameContainer.style.pointerEvents = 'inherit';
+  gameContainer.style.marginTop = '0';
+
   playBtn.style.pointerEvents = 'none';
+  playBtn.style.height = '0';
+  playBtn.style.marginTop = '0';
+  playBtn.style.opacity = '0';
+
+  player1Name.innerHTML = player1Input.value;
+  player2Name.innerHTML = player2Input.value;
+
+  playersShow.forEach( player => {
+    player.style.opacity = '1';
+  });
+
+  inputContainer.style.marginTop = '0';
+  inputContainer.style.opacity = '0';
+  inputContainer.style.pointerEvents = 'none';
+  inputContainer.style.flexBasis = '20%';
+  inputContainer.style.minWidth = '20%';
+  
   squares.forEach(square => {
     square.style.width = '120px';
     square.style.height = '120px';
   });
+  
+  window.setTimeout(function(){
+    playBtn.style.visibility = 'hidden';
+    inputContainer.style.visibility = 'hidden';
+  },1000);
+
   nClick += 1;
 }
 

@@ -12,15 +12,29 @@
     <h1>Tic Tac Toe</h1>
   </div>
   <div class="name-container">
-    <div>
-      <span>X</span>
-      <input type="text" name="player1" id="player-1" placeholder="Player 1" class="form-control">
+    <div class="player-1-container player-container">
+      <div>
+        <span class="player-1-name"></span>
+        <span>X</span>
+      </div>
     </div>
-    <div>
-      <span>O</span>
-      <input type="text" name="player2" id="player-2" placeholder="Player 2" class="form-control">
+    <div class="input-container">
+      <div>
+        <span>X</span>
+        <input type="text" name="player1" id="player-1" placeholder="Player 1" class="form-control">
+      </div>
+      <div>
+        <span>O</span>
+        <input type="text" name="player2" id="player-2" placeholder="Player 2" class="form-control">
+      </div>
+      <a class="btn btn-dark" id="play">Play!</a>
     </div>
-    <a class="btn btn-dark" id="play">Play!</a>
+    <div class="player-2-container player-container">
+      <div>
+        <span class="player-2-name"></span>
+        <span>O</span>
+      </div>
+    </div>
   </div>
   <div class="game-container">
     <div class="row">
