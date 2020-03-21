@@ -35,6 +35,9 @@ const player1Name = document.querySelector('.player-1-name');
 const player2Name = document.querySelector('.player-2-name');
 const playersShow = document.querySelectorAll('.player-container');
 const inputContainer = document.querySelector('.input-container');
+const winnerField = document.querySelector('.winner-field');
+const winnerDiv = document.querySelector('.winner');
+const playAgain = document.querySelector('#play-again')
 
 const InputCheck = (input1, input2) => {
   const boxCheck = (event) => {
@@ -92,8 +95,8 @@ playBtn.onclick = () => {
 
   player1Name.innerHTML = player1Input.value;
   player2Name.innerHTML = player2Input.value;
-  const player1 = Player(player1Input, 'X');
-  const player2 = Player(player2Input, 'O');
+  const player1 = Player(player1Input.value, 'X');
+  const player2 = Player(player2Input.value, 'O');
 
   playersShow.forEach( player => {
     player.style.opacity = '1';
@@ -126,17 +129,65 @@ playBtn.onmouseleave = () => {
   }
 };
 
-for (let i = 0; i < squares.length; i++) {
-  const x = squares[i];
-  x.onclick = () => {
-    x.style.backgroundColor = 'red';
-    console.log(parseInt(x.classList.value.slice(8)));
-  }
+const afterWin = (places) => {
+  places.empty();
+  gameContainer.style.pointerEvents = '';
+  winnerDiv.style.opacity = '1';
+  winnerDiv.style.pointerEvents = 'inherit';
+  squares.forEach(square => {
+    square.style.width = '';
+    square.style.height = '';
+    square.style.fontSize = '3em';
+  });
+
+  playAgain.onclick = () => {
+    squares.forEach( square => {
+      square.innerHTML = '';
+      square.style.width = '120px';
+      square.style.height = '120px';
+      square.style.fontSize = '';
+    });
+    gameContainer.style.pointerEvents = 'inherit';
+    winnerDiv.style.opacity = '';
+    winnerDiv.style.pointerEvents = '';
+  };
 };
 
-// const winCondition = {
-//   
-// };
+const winCondition = (places, player1, player2) => {
+  var board = places.board;
+  for (let index = 0; index < 3; index++) {
+    if (board[3*index] == board[3*index + 1] && board[3*index + 1] == board[3*index + 2] && board[3*index] != '') {
+      if (board[3*index] == 'X') {
+        winnerField.innerHTML = `${player1.name} won!`;
+      } else {
+        winnerField.innerHTML = `${player2.name} won!`;
+      };
+      afterWin(places);
+    } else if ( board[index] == board[index + 3] && board[index] == board[index + 6] && board[index] != '') {
+      if (board[index] == 'X') {
+        winnerField.innerHTML = `${player1.name} won!`;
+      } else {
+        winnerField.innerHTML = `${player2.name} won!`;
+      };
+      afterWin(places);
+    };
+  };
+  if (board[0] == board[4] && board[0] == board[8] && board[4] != '') {
+    if (board[4] == 'X') {
+      winnerField.innerHTML = `${player1.name} won!`;
+    } else {
+      winnerField.innerHTML = `${player2.name} won!`;
+    };
+    afterWin(places);
+  } else if (board[2] == board[4] && board[2] == board[6] && board[4] != ''){
+    if (board[4] == 'X') {
+      winnerField.innerHTML = `${player1.name} won!`;
+    } else {
+      winnerField.innerHTML = `${player2.name} won!`;
+    };
+    afterWin(places);
+  };
+};
 
 function gamePlay(player1, player2){
   let count = 0;
@@ -152,8 +203,8 @@ function gamePlay(player1, player2){
       }
       if (game.move(square.classList.value.slice(8) - 1, icon)){
         square.innerHTML = icon;
+        if(count > 3){ winCondition(board, player1, player2) };
         count += 1;
-        console.log(board.board);
       };
     };
   });  

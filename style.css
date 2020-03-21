@@ -138,7 +138,7 @@ body {
   display: block;
   height: 80px;
   width: 80px;
-  font-size: 80px;
+  font-size: 5em;
   text-align: center;
   max-width: 33%;
   max-height: 33%;
@@ -188,5 +188,33 @@ body {
 .pos-9 {
   border-bottom: none;
   border-right: none;
+}
+
+.winner {
+  opacity: 0;
+  pointer-events: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+
+.winner-field {
+  font-size: 3em;
+  text-align: center;
+}
+
+#play-again {
+  margin: 0 auto;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  width: 20%;
+  color: white;
 }
 /*# sourceMappingURL=style.css.map */
