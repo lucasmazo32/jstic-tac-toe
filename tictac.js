@@ -15,9 +15,10 @@ const GameFlow = (game, player1, player2) => {
   const move = (pos, icon) => {
     if (game.board[pos] == ''){
       game.move(pos, icon);
-      console.log('Valid move')
+      return true;
     } else {
       console.log('Invalid move!');
+      return false;
     }
   };
   return { move };
@@ -33,7 +34,7 @@ const player2Input = document.querySelector('#player-2');
 const player1Name = document.querySelector('.player-1-name');
 const player2Name = document.querySelector('.player-2-name');
 const playersShow = document.querySelectorAll('.player-container');
-const inputContainer = document.querySelector('.input-container')
+const inputContainer = document.querySelector('.input-container');
 
 const InputCheck = (input1, input2) => {
   const boxCheck = (event) => {
@@ -91,6 +92,8 @@ playBtn.onclick = () => {
 
   player1Name.innerHTML = player1Input.value;
   player2Name.innerHTML = player2Input.value;
+  const player1 = Player(player1Input, 'X');
+  const player2 = Player(player2Input, 'O');
 
   playersShow.forEach( player => {
     player.style.opacity = '1';
@@ -112,8 +115,10 @@ playBtn.onclick = () => {
     inputContainer.style.visibility = 'hidden';
   },1000);
 
+  gamePlay(player1, player2);
+
   nClick += 1;
-}
+};
 
 playBtn.onmouseleave = () => {
   if (nClick == 0){
@@ -127,4 +132,29 @@ for (let i = 0; i < squares.length; i++) {
     x.style.backgroundColor = 'red';
     console.log(parseInt(x.classList.value.slice(8)));
   }
+};
+
+// const winCondition = {
+//   
+// };
+
+function gamePlay(player1, player2){
+  let count = 0;
+  var icon = '';
+  const board = Board();
+  const game = GameFlow(board, player1, player2);
+  squares.forEach( square => {
+    square.onclick = () => {
+      if (count % 2 == 0){
+        icon = player1.icon;
+      } else {
+        icon = player2.icon;
+      }
+      if (game.move(square.classList.value.slice(8) - 1, icon)){
+        square.innerHTML = icon;
+        count += 1;
+        console.log(board.board);
+      };
+    };
+  });  
 };

@@ -138,6 +138,8 @@ body {
   display: block;
   height: 80px;
   width: 80px;
+  font-size: 80px;
+  text-align: center;
   max-width: 33%;
   max-height: 33%;
   border: 0.5px solid black;
