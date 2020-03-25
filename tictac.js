@@ -42,7 +42,7 @@ const playAgain = document.querySelector('#play-again');
 const InputCheck = (input1, input2) => {
   const boxCheck = event => {
     event.addEventListener('input', () => {
-      if (event.value.length != 0 && event.value.length < 3) {
+      if (event.value.length !== 0 && event.value.length < 3) {
         event.style.boxShadow = '0px 0px 5px 2px red';
       } else {
         event.style.boxShadow = '';
@@ -80,46 +80,12 @@ playBtn.onmouseenter = () => {
   gameContainer.style.opacity = '0.3';
 };
 
-function gamePlay(player1, player2) {
-  let count = 0;
-  let icono = '';
-  const board = Board();
-  const game = GameFlow(board, player1, player2);
-  squares.forEach(square => {
-    square.onclick = () => {
-      if (count % 2 === 0) {
-        icono = player1.icon;
-      } else {
-        icono = player2.icon;
-      }
-      if (game.move(square.classList.value.slice(8) - 1, icono)) {
-        square.innerHTML = icono;
-        if (count > 3) {
-          winCondition(board, player1, player2);
-        }
-        count += 1;
-      }
-    };
-  });
-}
-
-
 let nClick = 0;
 
 playBtn.onclick = () => {
   gameContainer.style.opacity = '1';
   gameContainer.style.pointerEvents = 'inherit';
   gameContainer.style.marginTop = '0';
-
-  playBtn.style.pointerEvents = 'none';
-  playBtn.style.height = '0';
-  playBtn.style.marginTop = '0';
-  playBtn.style.opacity = '0';
-
-  player1Name.innerHTML = player1Input.value;
-  player2Name.innerHTML = player2Input.value;
-  const player1 = Player(player1Input.value, 'X');
-  const player2 = Player(player2Input.value, 'O');
 
   playersShow.forEach(player => {
     player.style.opacity = '1';
@@ -140,9 +106,6 @@ playBtn.onclick = () => {
     playBtn.style.visibility = 'hidden';
     inputContainer.style.visibility = 'hidden';
   }, 1000);
-
-  gamePlay(player1, player2);
-  nClick += 1;
 };
 
 playBtn.onmouseleave = () => {
@@ -193,9 +156,9 @@ const winCondition = (places, player1, player2) => {
       }
       anyWinner = afterWin(places);
     } else if (
-      board[index] === board[index + 3] &&
-      board[index] === board[index + 6] &&
-      board[index] !== ''
+      board[index] === board[index + 3]
+      && board[index] === board[index + 6]
+      && board[index] !== ''
     ) {
       if (board[index] === 'X') {
         winnerField.innerHTML = `${player1.name} won!`;
@@ -234,3 +197,39 @@ const winCondition = (places, player1, player2) => {
   }
 };
 
+function gamePlay(player1, player2) {
+  let count = 0;
+  let icono = '';
+  const board = Board();
+  const game = GameFlow(board, player1, player2);
+  squares.forEach(square => {
+    square.onclick = () => {
+      if (count % 2 === 0) {
+        icono = player1.icon;
+      } else {
+        icono = player2.icon;
+      }
+      if (game.move(square.classList.value.slice(8) - 1, icono)) {
+        square.innerHTML = icono;
+        if (count > 3) {
+          winCondition(board, player1, player2);
+        }
+        count += 1;
+      }
+    };
+  });
+}
+
+playBtn.addEventListener('click', () => {
+  playBtn.style.pointerEvents = 'none';
+  playBtn.style.height = '0';
+  playBtn.style.marginTop = '0';
+  playBtn.style.opacity = '0';
+
+  player1Name.innerHTML = player1Input.value;
+  player2Name.innerHTML = player2Input.value;
+  const player1 = Player(player1Input.value, 'X');
+  const player2 = Player(player2Input.value, 'O');
+  gamePlay(player1, player2);
+  nClick += 1;
+});
