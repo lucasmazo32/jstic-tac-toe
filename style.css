@@ -11,7 +11,16 @@ body {
   font-size: 80px;
 }
 
-.name-container {
+@media only screen and (max-width: 600px) {
+  .title {
+    width: 100%;
+  }
+  .title h1 {
+    font-size: 18vw;
+  }
+}
+
+.input-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,17 +28,44 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  width: 40%;
-  min-width: 400px;
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+  min-width: 300px;
   margin: 0 auto;
   margin-top: 50px;
+  -webkit-transition: opacity 0.5s ease, margin 1s ease, max-width 1s ease, -webkit-flex-basis 1s ease;
+  transition: opacity 0.5s ease, margin 1s ease, max-width 1s ease, -webkit-flex-basis 1s ease;
+  transition: opacity 0.5s ease, margin 1s ease, flex-basis 1s ease, max-width 1s ease;
+  transition: opacity 0.5s ease, margin 1s ease, flex-basis 1s ease, max-width 1s ease, -webkit-flex-basis 1s ease, -ms-flex-preferred-size 1s ease;
 }
 
-.name-container input {
+.input-container input {
   margin-top: 10px;
 }
 
-.name-container div {
+.input-container div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.input-container #play {
+  width: 50%;
+  pointer-events: none;
+  opacity: 0.5;
+  height: 2.5em;
+  margin: 0 auto;
+  margin-top: 20px;
+  color: white;
+  -webkit-transition: height 1s ease, opacity 0.5s ease, margin 1s ease;
+  transition: height 1s ease, opacity 0.5s ease, margin 1s ease;
+}
+
+.input-container #play:hover {
+  color: white;
+}
+
+.name-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -47,40 +83,58 @@ body {
   font-size: 1.5em;
 }
 
-.name-container a {
-  width: 50%;
-  margin: 0 auto;
-  margin-top: 10px;
-  color: white;
+.player-container {
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 
-.name-container a:hover {
-  color: white;
+.player-container div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.player-container div span {
+  margin-top: 0;
+}
+
+.player-1-container {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.player-2-container {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .game-container {
-  display: none;
-  height: 0px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
   opacity: 0;
+  pointer-events: none;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 0 auto;
-  margin-top: 50px;
-  -webkit-transition: height 350ms ease, opacity 350ms ease;
-  transition: height 350ms ease, opacity 350ms ease;
-}
-
-.game-container.visible-hover {
-  display: block;
-  height: auto;
-  opacity: 0.5;
-}
-
-.game-container.visible {
-  display: block;
-  height: auto;
-  opacity: 1;
+  -webkit-transition: opacity 0.5s ease, margin 1s ease;
+  transition: opacity 0.5s ease, margin 1s ease;
 }
 
 .row {
@@ -90,11 +144,16 @@ body {
 }
 
 .pos {
-  background-color: gray;
   display: block;
   height: 80px;
   width: 80px;
+  font-size: 5em;
+  text-align: center;
+  max-width: 33%;
+  max-height: 33%;
   border: 0.5px solid black;
+  -webkit-transition: height 1s ease, width 1s ease;
+  transition: height 1s ease, width 1s ease;
 }
 
 .pos:hover {
@@ -102,5 +161,69 @@ body {
   background-color: gainsboro;
   -webkit-transition: ease 1s;
   transition: ease 1s;
+}
+
+.pos-1 {
+  border-top: none;
+  border-left: none;
+}
+
+.pos-2 {
+  border-top: none;
+}
+
+.pos-3 {
+  border-right: none;
+  border-top: none;
+}
+
+.pos-4 {
+  border-left: none;
+}
+
+.pos-6 {
+  border-right: none;
+}
+
+.pos-7 {
+  border-bottom: none;
+  border-left: none;
+}
+
+.pos-8 {
+  border-bottom: none;
+}
+
+.pos-9 {
+  border-bottom: none;
+  border-right: none;
+}
+
+.winner {
+  opacity: 0;
+  pointer-events: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+
+.winner-field {
+  font-size: 3em;
+  text-align: center;
+}
+
+#play-again {
+  margin: 0 auto;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  width: 20%;
+  color: white;
 }
 /*# sourceMappingURL=style.css.map */
