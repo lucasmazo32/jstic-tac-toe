@@ -128,3 +128,29 @@ playBtn.onmouseleave = () => {
     gameContainer.style.opacity = '';
   }
 };
+
+const afterWin = (places) => {
+  places.empty();
+  gameContainer.style.pointerEvents = '';
+  winnerDiv.style.opacity = '1';
+  winnerDiv.style.pointerEvents = 'inherit';
+  squares.forEach(square => {
+    square.style.width = '';
+    square.style.height = '';
+    square.style.fontSize = '3em';
+  });
+
+  playAgain.onclick = () => {
+    squares.forEach( square => {
+      square.innerHTML = '';
+      square.style.width = '120px';
+      square.style.height = '120px';
+      square.style.fontSize = '';
+    });
+    gameContainer.style.pointerEvents = 'inherit';
+    winnerDiv.style.opacity = '';
+    winnerDiv.style.pointerEvents = '';
+  };
+
+  return false;
+};
