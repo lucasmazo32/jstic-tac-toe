@@ -9,7 +9,7 @@
   <h3 align="center">Javascript TicTacToe game  </h3>
 
   <p align="center">
-    <img src="./tictactoe.gif" alt="Logo" width="300" height="20">
+    <img src="./tictactoe.gif" alt="Logo" width="300" height="200">
 
 <br>
   <a href="https://github.com/lucasmazo32/jstic-tac-toe/tree/feature/jtictactoe"><strong>Explore the docs »</strong></a>
