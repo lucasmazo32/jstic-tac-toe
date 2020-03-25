@@ -154,3 +154,73 @@ const afterWin = (places) => {
 
   return false;
 };
+
+const winCondition = (places, player1, player2) => {
+  var board = places.board;
+  var anyWinner = true;
+  for (let index = 0; index < 3; index++) {
+    if (board[3*index] == board[3*index + 1] && board[3*index + 1] == board[3*index + 2] && board[3*index] != '') {
+      if (board[3*index] == 'X') {
+        winnerField.innerHTML = `${player1.name} won!`;
+      } else {
+        winnerField.innerHTML = `${player2.name} won!`;
+      };
+      anyWinner = afterWin(places);
+    } else if ( board[index] == board[index + 3] && board[index] == board[index + 6] && board[index] != '') {
+      if (board[index] == 'X') {
+        winnerField.innerHTML = `${player1.name} won!`;
+      } else {
+        winnerField.innerHTML = `${player2.name} won!`;
+      };
+      anyWinner = afterWin(places);
+    };
+  };
+  if (board[0] == board[4] && board[0] == board[8] && board[4] != '') {
+    if (board[4] == 'X') {
+      winnerField.innerHTML = `${player1.name} won!`;
+    } else {
+      winnerField.innerHTML = `${player2.name} won!`;
+    };
+    anyWinner = afterWin(places);
+  } else if (board[2] == board[4] && board[2] == board[6] && board[4] != ''){
+    if (board[4] == 'X') {
+      winnerField.innerHTML = `${player1.name} won!`;
+    } else {
+      winnerField.innerHTML = `${player2.name} won!`;
+    };
+    anyWinner = afterWin(places);
+  };
+  if (anyWinner){
+    var posCount = 0;
+    board.forEach( position => {
+      if(position == ''){
+        posCount += 1;
+      }
+    });
+    if (posCount == 0) {
+      winnerField.innerHTML ='Boring...';
+      afterWin(places);
+    }
+  };
+};
+
+function gamePlay(player1, player2){
+  let count = 0;
+  var icon = '';
+  const board = Board();
+  const game = GameFlow(board, player1, player2);
+  squares.forEach( square => {
+    square.onclick = () => {
+      if (count % 2 == 0){
+        icon = player1.icon;
+      } else {
+        icon = player2.icon;
+      }
+      if (game.move(square.classList.value.slice(8) - 1, icon)){
+        square.innerHTML = icon;
+        if(count > 3){ winCondition(board, player1, player2) };
+        count += 1;
+      };
+    };
+  });  
+};
