@@ -1,0 +1,106 @@
+body {
+  font-family: 'Baloo Chettan 2', sans-serif, Arial, Helvetica;
+  background-color: cadetblue;
+}
+
+.title {
+  text-align: center;
+}
+
+.title h1 {
+  font-size: 80px;
+}
+
+.name-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  width: 40%;
+  min-width: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.name-container input {
+  margin-top: 10px;
+}
+
+.name-container div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.name-container span {
+  margin-top: 10px;
+  text-align: center;
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.name-container a {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 10px;
+  color: white;
+}
+
+.name-container a:hover {
+  color: white;
+}
+
+.game-container {
+  display: none;
+  height: 0px;
+  opacity: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 50px;
+  -webkit-transition: height 350ms ease, opacity 350ms ease;
+  transition: height 350ms ease, opacity 350ms ease;
+}
+
+.game-container.visible-hover {
+  display: block;
+  height: auto;
+  opacity: 0.5;
+}
+
+.game-container.visible {
+  display: block;
+  height: auto;
+  opacity: 1;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.pos {
+  background-color: gray;
+  display: block;
+  height: 80px;
+  width: 80px;
+  border: 0.5px solid black;
+}
+
+.pos:hover {
+  cursor: pointer;
+  background-color: gainsboro;
+  -webkit-transition: ease 1s;
+  transition: ease 1s;
+}
+/*# sourceMappingURL=style.css.map */
