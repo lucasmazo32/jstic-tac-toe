@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
+  <title>Sandbox</title>
+</head>
+<body>
+  <div class="title">
+    <h1>Tic Tac Toe</h1>
+  </div>
+  <div class="name-container">
+    <div class="player-1-container player-container">
+      <div>
+        <span class="player-1-name"></span>
+        <span>X</span>
+      </div>
+    </div>
+    <div class="input-container">
+      <div>
+        <span>X</span>
+        <input type="text" name="player1" id="player-1" placeholder="Player 1" class="form-control">
+      </div>
+      <div>
+        <span>O</span>
+        <input type="text" name="player2" id="player-2" placeholder="Player 2" class="form-control">
+      </div>
+      <a class="btn btn-dark" id="play">Play!</a>
+    </div>
+    <div class="player-2-container player-container">
+      <div>
+        <span class="player-2-name"></span>
+        <span>O</span>
+      </div>
+    </div>
+  </div>
+  <div class="game-container">
+    <div class="row">
+      <a class="pos pos-1"></a>
+      <a class="pos pos-2"></a>
+      <a class="pos pos-3"></a>
+    </div>
+    <div class="row">
+      <a class="pos pos-4"></a>
+      <a class="pos pos-5"></a>
+      <a class="pos pos-6"></a>
+    </div>
+    <div class="row">
+      <a class="pos pos-7"></a>
+      <a class="pos pos-8"></a>
+      <a class="pos pos-9"></a>
+    </div>
+  </div>
+  <div class="winner">
+    <span class="winner-field"></span>
+    <a class="btn btn-dark" id="play-again">Play again!</a>
+  </div>
+</body>
+<script src="./tictac.js"></script>
+</html>

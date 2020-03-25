@@ -1,0 +1,20 @@
+{
+  "name": "jstic-tac-toe",
+  "version": "1.0.0",
+  "description": "TicTacToe",
+  "main": "tictac.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasmazo32/jstic-tac-toe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasmazo32/jstic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/lucasmazo32/jstic-tac-toe#readme"
+}
