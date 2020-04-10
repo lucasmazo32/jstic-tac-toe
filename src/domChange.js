@@ -18,7 +18,8 @@ let nClick = 0;
 
 const animations = () => {
   const InputCheck = (input1, input2) => {
-    const boxCheck = event => {
+    const boxCheck = (myEvent) => {
+      const event = myEvent;
       event.addEventListener('input', () => {
         if (event.value.length !== 0 && event.value.length < 3) {
           event.style.boxShadow = '0px 0px 5px 2px red';
@@ -29,7 +30,9 @@ const animations = () => {
     };
     boxCheck(input1);
     boxCheck(input2);
-    const readyTG = (event1, event2) => {
+    const readyTG = (myEvent1, myEvent2) => {
+      const event1 = myEvent1;
+      const event2 = myEvent2;
       event1.oninput = () => {
         if (event1.value.length >= 3 && event2.value.length >= 3) {
           playBtn.style.opacity = '1';
@@ -64,7 +67,8 @@ const animations = () => {
     gameContainer.style.pointerEvents = 'inherit';
     gameContainer.style.marginTop = '0';
 
-    playersShow.forEach(player => {
+    playersShow.forEach((myPlayer) => {
+      const player = myPlayer;
       player.style.opacity = '1';
     });
 
@@ -74,7 +78,8 @@ const animations = () => {
     inputContainer.style.flexBasis = '20%';
     inputContainer.style.minWidth = '20%';
 
-    squares.forEach(square => {
+    squares.forEach((mySquare) => {
+      const square = mySquare;
       square.style.width = '120px';
       square.style.height = '120px';
     });
@@ -92,19 +97,21 @@ const animations = () => {
   };
 };
 
-const afterWin = places => {
+const afterWin = (places) => {
   places.empty();
   gameContainer.style.pointerEvents = '';
   winnerDiv.style.opacity = '1';
   winnerDiv.style.pointerEvents = 'inherit';
-  squares.forEach(square => {
+  squares.forEach((mySquare) => {
+    const square = mySquare;
     square.style.width = '';
     square.style.height = '';
     square.style.fontSize = '3em';
   });
 
   playAgain.onclick = () => {
-    squares.forEach(square => {
+    squares.forEach((mySquare) => {
+      const square = mySquare;
       square.innerHTML = '';
       square.style.width = '120px';
       square.style.height = '120px';
@@ -118,7 +125,8 @@ const afterWin = places => {
   return false;
 };
 
-const winCondition = (places, player1, player2, afterWin) => {
+const winCondition = (places, player1, player2, afterWinner, winField) => {
+  const winningField = winField;
   const { board } = places;
   let anyWinner = true;
   for (let index = 0; index < 3; index += 1) {
@@ -128,49 +136,49 @@ const winCondition = (places, player1, player2, afterWin) => {
       && board[3 * index] !== ''
     ) {
       if (board[3 * index] === 'X') {
-        winnerField.innerHTML = `${player1.name} won!`;
+        winningField.innerHTML = `${player1.name} won!`;
       } else {
-        winnerField.innerHTML = `${player2.name} won!`;
+        winningField.innerHTML = `${player2.name} won!`;
       }
-      anyWinner = afterWin(places);
+      anyWinner = afterWinner(places);
     } else if (
       board[index] === board[index + 3]
       && board[index] === board[index + 6]
       && board[index] !== ''
     ) {
       if (board[index] === 'X') {
-        winnerField.innerHTML = `${player1.name} won!`;
+        winningField.innerHTML = `${player1.name} won!`;
       } else {
-        winnerField.innerHTML = `${player2.name} won!`;
+        winningField.innerHTML = `${player2.name} won!`;
       }
-      anyWinner = afterWin(places);
+      anyWinner = afterWinner(places);
     }
   }
   if (board[0] === board[4] && board[0] === board[8] && board[4] !== '') {
     if (board[4] === 'X') {
-      winnerField.innerHTML = `${player1.name} won!`;
+      winningField.innerHTML = `${player1.name} won!`;
     } else {
-      winnerField.innerHTML = `${player2.name} won!`;
+      winningField.innerHTML = `${player2.name} won!`;
     }
-    anyWinner = afterWin(places);
+    anyWinner = afterWinner(places);
   } else if (board[2] === board[4] && board[2] === board[6] && board[4] !== '') {
     if (board[4] === 'X') {
-      winnerField.innerHTML = `${player1.name} won!`;
+      winningField.innerHTML = `${player1.name} won!`;
     } else {
-      winnerField.innerHTML = `${player2.name} won!`;
+      winningField.innerHTML = `${player2.name} won!`;
     }
-    anyWinner = afterWin(places);
+    anyWinner = afterWinner(places);
   }
   if (anyWinner) {
     let posCount = 0;
-    board.forEach(position => {
+    board.forEach((position) => {
       if (position === '') {
         posCount += 1;
       }
     });
     if (posCount === 0) {
-      winnerField.innerHTML = 'Boring...';
-      afterWin(places);
+      winningField.textContent = 'Boring...';
+      afterWinner(places);
     }
   }
 };
@@ -180,7 +188,8 @@ function gamePlay(player1, player2) {
   let icono = '';
   const board = Board();
   const game = GameFlow(board, player1, player2);
-  squares.forEach(square => {
+  squares.forEach((mySquare) => {
+    const square = mySquare;
     square.onclick = () => {
       if (count % 2 === 0) {
         icono = player1.icon;
@@ -190,7 +199,7 @@ function gamePlay(player1, player2) {
       if (game.move(square.classList.value.slice(8) - 1, icono)) {
         square.innerHTML = icono;
         if (count > 3) {
-          winCondition(board, player1, player2, afterWin);
+          winCondition(board, player1, player2, afterWin, winnerField);
         }
         count += 1;
       }
@@ -204,7 +213,7 @@ const playGame = () => {
     playBtn.style.height = '0';
     playBtn.style.marginTop = '0';
     playBtn.style.opacity = '0';
-    
+
     player1Name.innerHTML = player1Input.value;
     player2Name.innerHTML = player2Input.value;
     const player1 = Player(player1Input.value, 'X');
@@ -214,4 +223,4 @@ const playGame = () => {
   });
 };
 
-export { playGame, animations };
+export { playGame, animations, winCondition };

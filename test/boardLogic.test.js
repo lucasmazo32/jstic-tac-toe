@@ -2,20 +2,20 @@ import { Board, GameFlow, Player } from '../src/ticSet';
 
 test('Board instance', () => {
   const board = Board();
-  expect(board.board).toEqual(['','','','','','','','','']);
+  expect(board.board).toEqual(['', '', '', '', '', '', '', '', '']);
 });
 
 test('Board after move', () => {
   const board = Board();
-  board.move(5,'x');
-  expect(board.board).toEqual(['','','','','','x','','','']);
+  board.move(5, 'x');
+  expect(board.board).toEqual(['', '', '', '', '', 'x', '', '', '']);
 });
 
 test('Board after empty', () => {
   const board = Board();
-  board.move(5,'x');
+  board.move(5, 'x');
   board.empty();
-  expect(board.board).toEqual(['','','','','','','','','']);
+  expect(board.board).toEqual(['', '', '', '', '', '', '', '', '']);
 });
 
 test('Gameflow - testing moves', () => {
