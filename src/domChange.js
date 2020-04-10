@@ -118,7 +118,7 @@ const afterWin = places => {
   return false;
 };
 
-const winCondition = (places, player1, player2) => {
+const winCondition = (places, player1, player2, afterWin) => {
   const { board } = places;
   let anyWinner = true;
   for (let index = 0; index < 3; index += 1) {
@@ -190,7 +190,7 @@ function gamePlay(player1, player2) {
       if (game.move(square.classList.value.slice(8) - 1, icono)) {
         square.innerHTML = icono;
         if (count > 3) {
-          winCondition(board, player1, player2);
+          winCondition(board, player1, player2, afterWin);
         }
         count += 1;
       }

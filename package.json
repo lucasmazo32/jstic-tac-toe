@@ -5,6 +5,8 @@
   "main": "tictac.js",
   "scripts": {
     "test": "jest",
+    "test:console": "jest --verbose false",
+    "watch": "jest --watch",
     "start:dev": "webpack-dev-server --mode development --open",
     "start": "webpack"
   },
