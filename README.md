@@ -59,7 +59,20 @@ For more details about the Project and it's requirements go to <a href="https://
 
 To get a local copy up and running follow these simple steps.
 
-Clone or fork the repo <https://github.com/lucasmazo32/jstic-tac-toe/tree/development>
+Clone or fork the (repo)[https://github.com/lucasmazo32/jstic-tac-toe/tree/development].
+
+- After clonning and changing directory, run in your terminal:
+
+> ``` npm install ```
+
+- After installing the node modules, run the following command to start the server in dev mode:
+
+> ``` npm run start:dev ```
+
+- To run the tests, type the following command in your terminal:
+
+> ``` npm test ```
+
 
 
 <!-- CONTRIBUTING --> 
